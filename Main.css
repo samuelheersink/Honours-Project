@@ -1,0 +1,59 @@
+.graphCanvas {
+    margin: auto;
+    border-color: black;
+    border-style: solid;
+    display: block;
+}
+.instructions {
+    background-color: lightgreen;
+    margin-left: 5px;
+    width: 806;
+}
+.content {
+    max-width: 850px;
+    margin: auto;
+    background: white;
+    padding: 10px;
+  }
+.errorMessage {
+    background-color: lightcoral
+}
+.divPalette {
+    overflow: hidden;
+    user-select: none;
+}
+.output{
+    user-select: none;
+}
+.paletteButton {
+    height: 28px;
+    width: 28px;
+    border: 0px;
+    margin-left: 12px;
+    margin-top: 3px;
+    padding: 2px;
+    vertical-align: middle;
+    background-color :#c9deff;
+    user-select: none;
+}
+.paletteButtonSelected {
+    border: 1px;
+    border-color: darkblue;
+    border-style: solid;
+}
+.input {
+    visibility: hidden;
+    margin-left: 12px;
+    margin-top: 3px;
+    margin-bottom: 6px;
+    padding: 2px;
+}
+.conversion {
+    visibility: hidden;
+    width: 806;
+    margin-left: 5px;
+}
+.conversionButton {
+    margin-left: 8px;
+    padding: 2px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>
+        Kleene Machine
+    </title>
+    <script src="Main.js" type="text/javascript"></script>
+    <meta charset="UTF8" />
+    <meta name="author" content="Samuel Heersink">
+    <meta name="purpose" content="Honours project, under the supervision of Thomas Tran">
+    <meta name="creation_date" content="December 2018">
+    <link rel="stylesheet" type="text/css" href="Main.css" />
+    <link rel="icon" type="image/png" href="Icons/startState.png">
+</head>
+
+<body>
+    <div class="content">
+        <canvas id="graphCanvas" class="graphCanvas" width="800" height="500">
+            <!-- here is the canvas where all the graph creation takes place-->
+        </canvas>
+        <div name="palette" id="divPalette" class="divPalette">
+            <button title="Modify the alphabet" id="btnAlphabet" class="paletteButton"><img src="Icons/alphabet.png" /></button>
+            <button title="Add start state" id="btnAddStart" class="paletteButton"><img src="Icons/startState.png" /></button>
+            <button title="Add new state" id="btnAddState" class="paletteButton"><img src="Icons/state.png" /></button>
+            <button title="Add a final state" id="btnAddFinal" class="paletteButton"><img src="Icons/finalState.png" /></button>
+            <button title="Add a transition between two states" id="btnAddTransition" class="paletteButton"><img src="Icons/transition.png" /></button>
+            <button title="Delete a state or a transition" id="btnDelete" class="paletteButton"><img src="Icons/delete.png" /></button>
+            <button title="Undo last change" id="btnUndo" class="paletteButton"><img src="Icons/undo.png" /></button>
+            <button title="Clear the graph" id="btnClear" class="paletteButton"><img src="Icons/clear.png" /></button>
+            <button title="Convert to regular expression" id="btnRegex" class="paletteButton"><img src="Icons/regex.png" /></button>
+            <button title="Render a PNG of the graph" id="btnPng" class="paletteButton"><img src="Icons/png.png" /></button>
+            <label id="labelLabel" class="input">Label:</label>
+            <input id="inputLabel" class="input" />
+        </div>
+        <div>
+            <text id="messageText" class="message"></text>
+        </div>
+        <!-- <div class="controls">
+        <button type="button" name="testButton" onclick="test1()">Test</button>
+        <input type="file" id="xmlToLoad" name="xmlToLoad" accept=".xml" oninput="loadXML()" />
+    </div> -->
+        <div class="conversion">
+            <button title="Create a new start state and link it to the previous start states with lambda transitions" type="button" id="btnUniqueStart" class="conversionButton">Unique Start State</button>
+            <button title="Create a new final state and link it to the previous final states with lambda transitions" type="button" id="btnUniqueFinal" class="conversionButton">Unique Final State</button>
+            <button title="Combine all transitions that share origin and destination into one transition labelled with the union of the two" type="button" id="btnCombineTransitions" class="conversionButton">Combine Transitions</button>
+            <button title="Remove all single-state loops and add the Kleene closure of their label to the incoming edges of their states" type="button" id="btnRemoveLoops" class="conversionButton">Remove Loops</button>
+            <button title="Eliminate an intermediate state by adding transitions labelled (X)(Y) for each incoming transition labelled X and outgoing transition labelled Y" type="button" id="btnEliminateIntermediate" class="conversionButton">Eliminate Intermediate State</button>
+            <button title="Quit converting and return to the graph editor" type="button" id="btnQuit" class="conversionButton">Quit Conversion</button>
+            <button title="Cancel the current operation" type="button" id="btnCancel" disabled="disabled">Cancel</button>
+        </div>
+        <div id="imageOutput"></div>
+        <div name="Instructions" class="instructions">
+            <p>
+                This application is used for creating transition graphs and converting them into regular expressions,
+                as per Kleene's Theorem.
+            </p>
+            <p>
+                First, decide on the alphabet of characters accepted by your machine. Create start and final states
+                with any
+                number of intermediate states between them. Connect your graph using transitions labelled with regular
+                expressions formed of characters from your alphabet and the operators '+', '(', ')' and '*'.
+            </p>
+            <p>
+                Once you have created your graph, click on the the regex button to begin converting it to a regular
+                expression. If you have created a valid transition graph, apply the steps of part 2 of Kleene's
+                Theorem:
+                start by creating unique start and final states, then continue by removing loops and duplicate edges,
+                and
+                eliminating intermediate states one by one. Once you have reduced the graph to two states and one
+                transition, the conversion is complete.
+            </p>
+        </div>
+    </div>
+</body>
+<script>initialize(); main();</script>
+
+</html>
